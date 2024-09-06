@@ -6,15 +6,12 @@ import {
   TextInput,
   TextInputKeyPressEventData,
   TextStyle,
-  TouchableOpacity,
   View,
   ViewStyle,
 } from 'react-native';
 import React, {FC, useState} from 'react';
-import {RegularText} from './Text';
+import {RegularText, SmallText} from './Text';
 import Colors from '../constants/Colors';
-import Eyeopen from '../assets/svg/input/eyeopen.svg';
-import Eyeclose from '../assets/svg/input/eyeclosed.svg';
 
 interface InputProps {
   style?: ViewStyle;
@@ -22,7 +19,6 @@ interface InputProps {
   placeholder?: string;
   placeholderText?: string;
   inputStyle?: TextStyle;
-  password?: boolean;
   keyboard?: KeyboardTypeOptions;
   handleKeyPress?: (
     e: NativeSyntheticEvent<TextInputKeyPressEventData>,
@@ -35,6 +31,8 @@ interface InputProps {
   maxLength?: number;
   editable?: boolean;
   testID?: string;
+  errors?: {[key: string]: string};
+  setErrors?: React.Dispatch<React.SetStateAction<{[key: string]: string}>>;
 }
 
 export const TextField: FC<InputProps> = ({
@@ -43,7 +41,6 @@ export const TextField: FC<InputProps> = ({
   placeholder,
   placeholderText,
   inputStyle,
-  password,
   keyboard = 'default',
   handleKeyPress,
   returnKeyType,
@@ -52,13 +49,8 @@ export const TextField: FC<InputProps> = ({
   setText,
   maxLength,
   editable,
-  testID,
-  errors,
 }) => {
   const [isFocused, setFocused] = useState(false);
-  const errorMsg = errors?.[placeholderText];
-
-  const [hide, setHide] = useState(password);
 
   const styles = StyleSheet.create({
     input: {
@@ -74,11 +66,7 @@ export const TextField: FC<InputProps> = ({
     mainView: {
       alignItems: 'center',
       borderWidth: 2,
-      borderColor: errorMsg
-        ? Colors.red
-        : isFocused
-        ? Colors.primary
-        : Colors.borderColor,
+      borderColor: isFocused ? Colors.primary : Colors.borderColor,
       flexDirection: 'row',
       marginBottom: bottom,
       borderRadius: 5,
@@ -95,11 +83,8 @@ export const TextField: FC<InputProps> = ({
       )}
       <View style={styles.mainView}>
         <TextInput
-          onBlur={() => {
-            setFocused(false);
-          }}
-          onFocus={setFocused}
-          testID={testID}
+          onBlur={() => setFocused(false)}
+          onFocus={() => setFocused(true)}
           editable={editable}
           maxLength={maxLength}
           value={text}
@@ -109,24 +94,12 @@ export const TextField: FC<InputProps> = ({
           returnKeyType={returnKeyType}
           multiline={true}
           keyboardType={keyboard}
-          secureTextEntry={hide}
           placeholder={placeholder}
           placeholderTextColor={'#FFFFFF50'}
           style={styles.input}
           onKeyPress={handleKeyPress}
           onSubmitEditing={onSubmitEditing}
         />
-        {password && (
-          <TouchableOpacity
-            onPress={() => setHide(p => !p)}
-            style={{marginRight: 5}}>
-            {hide ? (
-              <Eyeclose height={15} width={15} />
-            ) : (
-              <Eyeopen height={15} width={15} />
-            )}
-          </TouchableOpacity>
-        )}
       </View>
     </>
   );
@@ -138,7 +111,6 @@ const Input: FC<InputProps> = ({
   placeholder,
   placeholderText,
   inputStyle,
-  password,
   keyboard = 'default',
   handleKeyPress,
   multiline,
@@ -148,13 +120,11 @@ const Input: FC<InputProps> = ({
   setText,
   maxLength,
   editable,
-  testID,
   errors,
+  setErrors,
 }) => {
   const [isFocused, setFocused] = useState(false);
-  const errorMsg = errors?.[placeholderText];
-
-  const [hide, setHide] = useState(password);
+  const errorMsg = errors?.[placeholderText || ''];
 
   const styles = StyleSheet.create({
     input: {
@@ -175,53 +145,55 @@ const Input: FC<InputProps> = ({
         ? Colors.primary
         : Colors.borderColor,
       flexDirection: 'row',
-      marginBottom: bottom,
+      marginBottom: errorMsg ? 5 : bottom,
       borderRadius: 5,
       paddingHorizontal: 15,
       ...style,
+    },
+    errorText: {
+      color: Colors.red,
+      marginBottom: bottom,
     },
   });
 
   return (
     <>
       {placeholderText && (
-        <RegularText style={{marginBottom: 8}}>{placeholderText}</RegularText>
+        <RegularText
+          style={{marginBottom: 8, color: errorMsg ? Colors.red : 'black'}}>
+          {placeholderText}
+        </RegularText>
       )}
       <View style={styles.mainView}>
         <TextInput
-          onBlur={() => {
-            setFocused(false);
-          }}
-          onFocus={setFocused}
-          testID={testID}
+          onBlur={() => setFocused(false)}
+          onFocus={() => setFocused(true)}
           editable={editable}
           maxLength={maxLength}
           value={text}
           cursorColor={Colors.primary}
           selectionColor={Colors.primary}
-          onChangeText={setText}
+          onChangeText={inputText => {
+            if (setErrors) {
+              setErrors(prev => {
+                const newErrors = {...prev};
+                delete newErrors[placeholderText || ''];
+                return newErrors;
+              });
+            }
+            setText(inputText);
+          }}
           returnKeyType={returnKeyType}
           multiline={multiline}
           keyboardType={keyboard}
-          secureTextEntry={hide}
           placeholder={placeholder}
           placeholderTextColor={'#FFFFFF50'}
           style={styles.input}
           onKeyPress={handleKeyPress}
           onSubmitEditing={onSubmitEditing}
         />
-        {password && (
-          <TouchableOpacity
-            onPress={() => setHide(p => !p)}
-            style={{marginRight: 5}}>
-            {hide ? (
-              <Eyeclose height={15} width={15} />
-            ) : (
-              <Eyeopen height={15} width={15} />
-            )}
-          </TouchableOpacity>
-        )}
       </View>
+      {errorMsg && <SmallText style={styles.errorText}>{errorMsg}</SmallText>}
     </>
   );
 };

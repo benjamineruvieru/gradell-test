@@ -6,10 +6,9 @@ import Card from 'components/Card';
 import {useMMKVObject} from 'react-native-mmkv';
 import AddExpensesButton from '../components/AddExpensesButton';
 import PageHeader from 'components/PageHeader';
+import ExpensesList from '../components/ExpensesList';
 
 const ViewExpenses = () => {
-  const [expenses] = useMMKVObject('expenses');
-  console.log('expenses', expenses);
   return (
     <Mainbackground>
       <PageHeader title={'Expenser'} />
@@ -21,7 +20,7 @@ const ViewExpenses = () => {
           </View>
           <AddExpensesButton />
         </View>
-        <Card></Card>
+        <ExpensesList />
       </View>
     </Mainbackground>
   );

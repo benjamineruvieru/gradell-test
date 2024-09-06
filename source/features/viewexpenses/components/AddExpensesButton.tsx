@@ -1,4 +1,4 @@
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import AddSvg from 'svg/icon/add.svg';
 import {useNavigation} from '@react-navigation/native';

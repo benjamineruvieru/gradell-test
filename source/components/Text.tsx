@@ -200,7 +200,7 @@ export const SmallText: React.FC<TextProps> = ({
 }) => {
   const styles = StyleSheet.create({
     text: {
-      fontFamily: 'Poppins-Medium',
+      fontFamily: 'Poppins-Regular',
       fontSize: 13,
       ...style,
     },

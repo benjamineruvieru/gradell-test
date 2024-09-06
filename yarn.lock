@@ -2882,24 +2882,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/query-core@npm:5.51.3":
-  version: 5.51.3
-  resolution: "@tanstack/query-core@npm:5.51.3"
-  checksum: 95c72f9357a365fb3482c8df3c7f6e3a6ef1e7d101cf7e7f93cdf9e32c1d73215d27dae87adef8e717bb0d4dee70526e01e77a2129879d6885f073a14940b4c9
-  languageName: node
-  linkType: hard
-
-"@tanstack/react-query@npm:^5.51.3":
-  version: 5.51.3
-  resolution: "@tanstack/react-query@npm:5.51.3"
-  dependencies:
-    "@tanstack/query-core": 5.51.3
-  peerDependencies:
-    react: ^18.0.0
-  checksum: 5ca8e6cc5d90f87887ee8af1b9cbc5bb5e7eb8e80f9346920c7eb13193b38e151caee55d9a30687f73aecfa88547573f4e632e8b7ef3c6cca71d12d88142bd6a
-  languageName: node
-  linkType: hard
-
 "@trysound/sax@npm:0.2.0":
   version: 0.2.0
   resolution: "@trysound/sax@npm:0.2.0"
@@ -3291,7 +3273,6 @@ __metadata:
     "@react-navigation/native": ^6.1.18
     "@react-navigation/native-stack": ^6.10.1
     "@shopify/flash-list": ^1.7.0
-    "@tanstack/react-query": ^5.51.3
     "@types/react": ^18.2.6
     "@types/react-test-renderer": ^18.0.0
     axios: ^1.7.2

@@ -71,38 +71,6 @@ const Text: React.FC<TextProps> = ({
   );
 };
 
-export const BigTextB: React.FC<TextProps> = ({children, style, onPress}) => {
-  const styles = StyleSheet.create({
-    text: {
-      fontFamily: 'Poppins-Bold',
-      fontSize: 30,
-      ...style,
-    },
-  });
-
-  return (
-    <Text onPress={onPress} style={styles.text}>
-      {children}
-    </Text>
-  );
-};
-
-export const BigText: React.FC<TextProps> = ({children, style, onPress}) => {
-  const styles = StyleSheet.create({
-    text: {
-      fontFamily: 'Poppins-SemiBold',
-      fontSize: 30,
-      ...style,
-    },
-  });
-
-  return (
-    <Text onPress={onPress} style={styles.text}>
-      {children}
-    </Text>
-  );
-};
-
 export const MediumText: React.FC<TextProps> = ({
   children,
   style,

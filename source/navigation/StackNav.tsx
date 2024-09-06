@@ -3,9 +3,14 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import ViewExpenses from 'features/viewexpenses/screens/ViewExpenses';
 import AddExpenses from 'features/addexpenses/screens/AddExpenses';
 
-const Stack = createNativeStackNavigator();
+export type StackParamList = {
+  ViewExpenses: undefined;
+  AddExpenses: undefined;
+};
 
-const StackNav = () => {
+const Stack = createNativeStackNavigator<StackParamList>();
+
+const StackNav: React.FC = () => {
   return (
     <Stack.Navigator
       screenOptions={{

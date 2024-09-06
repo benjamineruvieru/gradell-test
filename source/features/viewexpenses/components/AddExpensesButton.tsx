@@ -1,17 +1,18 @@
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
 import AddSvg from 'svg/icon/add.svg';
-import {useNavigation} from '@react-navigation/native';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
+import {StackParamList} from 'navigation/StackNav';
 
-const AddExpensesButton = () => {
-  const navigation = useNavigation();
+const AddExpensesButton: React.FC = () => {
+  const navigation = useNavigation<NavigationProp<StackParamList>>();
 
   const onPress = () => {
     navigation.navigate('AddExpenses');
   };
   return (
     <TouchableOpacity onPress={onPress} style={styles.button}>
-      <AddSvg />
+      <AddSvg width={30} height={30} />
     </TouchableOpacity>
   );
 };

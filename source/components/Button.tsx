@@ -21,10 +21,6 @@ interface ButtonProps {
   top?: number;
   small?: boolean;
   disable?: boolean;
-  grey?: boolean;
-  isSec?: boolean;
-  Icon?: React.ElementType;
-  testID?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -38,10 +34,6 @@ const Button: React.FC<ButtonProps> = ({
   top = 0,
   small,
   disable,
-  grey,
-  isSec,
-  Icon,
-  testID,
 }) => {
   const styles = StyleSheet.create({
     bg: {
@@ -50,7 +42,6 @@ const Button: React.FC<ButtonProps> = ({
       backgroundColor,
       borderColor: Colors.primary,
       borderRadius: small ? 5 : 8,
-      borderWidth: isSec ? 1 : 0,
       flexDirection: 'row',
       justifyContent: 'center',
       marginBottom: bottom,
@@ -64,20 +55,17 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <TouchableOpacity
-      testID={testID}
       disabled={load || disable}
       style={styles.bg}
       onPress={onPress}>
-      {load && <ActivityIndicator color={'white'} style={{right: 15}} />}
       <SmallTextB
         style={{
-          color: isSec ? Colors.primary : grey ? Colors.dim : 'white',
+          color: 'white',
           fontFamily: small ? 'Poppins-Medium' : 'Poppins-SemiBold',
           fontSize: small ? 11 : 13,
         }}>
         {title}
       </SmallTextB>
-      {Icon && <Icon style={{marginLeft: 10}} width={18} height={18} />}
     </TouchableOpacity>
   );
 };

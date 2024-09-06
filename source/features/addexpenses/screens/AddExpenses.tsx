@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 import React from 'react';
 import Mainbackground from 'components/Mainbackground';
 import PageHeader from 'components/PageHeader';
@@ -8,15 +8,15 @@ import AddCategoryButton from 'components/categories/AddCategoryButton';
 
 const AddExpenses = () => {
   return (
-    <Mainbackground>
+    <Mainbackground keyboard avoid>
       <PageHeader title={'Add Expense'} />
-      <View style={styles.body}>
+      <ScrollView style={styles.body}>
         <Input placeholderText="Name" />
         <Input placeholderText="Amount" />
         <AddCategoryButton />
         <TextField placeholderText="Description" />
         <Button title="Save" />
-      </View>
+      </ScrollView>
     </Mainbackground>
   );
 };

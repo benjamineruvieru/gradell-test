@@ -67,6 +67,8 @@ export const TextField: FC<InputProps> = ({
       fontFamily: 'Poppins-Regular',
       fontSize: 15,
       height: 120,
+      textAlignVertical: 'top',
+      padding: 0,
       ...inputStyle,
     },
     mainView: {
@@ -161,6 +163,7 @@ const Input: FC<InputProps> = ({
       fontFamily: 'Poppins-Regular',
       fontSize: 15,
       height: 50,
+      padding: 0,
       ...inputStyle,
     },
     mainView: {

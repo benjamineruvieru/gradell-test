@@ -5,4 +5,5 @@ export default {
   red: '#FF3A3AE5',
   borderColor: '#e5e5e5',
   grey: '#bebebe',
+  dim: '#f5f5f5',
 };

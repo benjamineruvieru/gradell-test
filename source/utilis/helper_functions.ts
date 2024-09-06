@@ -1,7 +1,5 @@
 import {DeviceEventEmitter} from 'react-native';
 import {SCREEN_HEIGHT, SCREEN_WIDTH} from '../constants/Variables';
-import countryData from '../constants/output.json';
-import citiesData from '../constants/lgas.json';
 
 export const getPercentHeight = (percent: number) => {
   return (percent / 100) * SCREEN_HEIGHT;

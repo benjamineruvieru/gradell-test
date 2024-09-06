@@ -4,4 +4,5 @@ export default {
   green: '#14E742',
   red: '#FF3A3AE5',
   borderColor: '#e5e5e5',
+  grey: '#bebebe',
 };

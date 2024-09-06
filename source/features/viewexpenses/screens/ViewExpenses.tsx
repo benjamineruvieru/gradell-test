@@ -1,18 +1,18 @@
 import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import Mainbackground from 'components/Mainbackground';
-import PageHeader from '../components/PageHeader';
 import {MediumText, SmallText} from 'components/Text';
 import Card from 'components/Card';
 import {useMMKVObject} from 'react-native-mmkv';
 import AddExpensesButton from '../components/AddExpensesButton';
+import PageHeader from 'components/PageHeader';
 
 const ViewExpenses = () => {
   const [expenses] = useMMKVObject('expenses');
   console.log('expenses', expenses);
   return (
     <Mainbackground>
-      <PageHeader />
+      <PageHeader title={'Expenser'} />
       <View style={styles.body}>
         <View style={styles.menuView}>
           <View>

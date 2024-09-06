@@ -1,12 +1,12 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {RegularTextB} from 'components/Text';
 import Colors from 'constants/Colors';
 
-const PageHeader = () => {
+const PageHeader: React.FC<{title: string}> = ({title}) => {
   return (
     <View style={styles.mainView}>
-      <RegularTextB>Expenser</RegularTextB>
+      <RegularTextB>{title}</RegularTextB>
     </View>
   );
 };

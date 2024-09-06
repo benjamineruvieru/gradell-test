@@ -72,7 +72,7 @@ const Button: React.FC<ButtonProps> = ({
       <SmallTextB
         style={{
           color: isSec ? Colors.primary : grey ? Colors.dim : 'white',
-          fontFamily: small ? 'Gilroy-Medium' : 'Gilroy-SemiBold',
+          fontFamily: small ? 'Poppins-Medium' : 'Poppins-SemiBold',
           fontSize: small ? 11 : 13,
         }}>
         {title}

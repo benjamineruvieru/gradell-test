@@ -1,4 +1,4 @@
-package com.app
+package com.bengradelltest
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

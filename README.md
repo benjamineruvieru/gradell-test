@@ -1,79 +1,105 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Expense Tracker App
 
-# Getting Started
+## Test Submission
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+This project is submitted as part of a test assignment for a fintech mobile app feature. The task was to build a simple expense tracker application using React Native and TypeScript, with a focus on clean code, intuitive UI, and proper state management.
 
-## Step 1: Start the Metro Server
+## Description
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+This is a simple expense tracking mobile application that allows users to add, display, and calculate their expenses. It features core functionality like adding new expenses, viewing recent expenses in a list, and calculating the total amount spent.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## Features
+
+### 1. Add Expenses
+
+- Users can add new expenses with the following fields:
+  - **Description**: A short description of the expense.
+  - **Amount**: The monetary value of the expense.
+  - **Category**: The category under which the expense falls (e.g., Food, Travel, etc.).
+
+### 2. Display Recent Expenses
+
+- A list of recent expenses is displayed using FlashList for efficient rendering.
+- Expenses are categorized and styled for easy readability.
+
+### 3. Calculate Total Amount
+
+- The app automatically calculates and displays the total amount spent based on the added expenses.
+
+## Bonus Features
+
+### 1. Filter by Category
+
+- Users can filter the list of expenses based on selected categories to easily manage expenses.
+
+### 2. Data Persistence
+
+- The app uses MMKV for storage, ensuring that expense data persists even after the app is closed and reopened.
+
+## UI and Styling
+
+- No external UI libraries were used in this project.
+- The UI is styled using React Native’s built-in styling methods and is designed to be responsive across different screen sizes.
+
+## Technologies Used
+
+- **React Native**: To build the cross-platform mobile app.
+- **TypeScript**: For better code maintainability and type safety.
+- **React Hooks**: (e.g., `useState`, `useEffect`) for state and effect management.
+- **FlashList**: For rendering a performant list of expenses.
+- **MMKV**: For fast and efficient data storage.
+
+## Installation and Setup
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/benjamineruvieru/gradell-test.git
+   ```
+
+2. Navigate into the project directory:
+
+   ```bash
+   cd  gradell-test
+   ```
+
+3. Install the dependencies:
+
+   ```bash
+   npm install
+   # or
+   yarn
+   ```
+
+4. Run the app on your device or simulator:
+   ```bash
+   npx react-native run-android
+   # or
+   npx react-native run-ios
+   ```
+
+A ready to install apk can also be found under the apk folder
+
+## Usage
+
+1. Open the app on your mobile device.
+2. Click on the plus button and use the form to add expenses with a description, amount, and category.
+3. View recent expenses in a categorized list and see the total amount spent.
+4. Optionally, filter expenses by category.
+
+## Folder Structure
 
 ```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
+.
+├── assets/             # Static assets
+├── components/         # Reusable UI components
+├── constants/          # App-wide constants
+├── features/           # Features like expense management
+├── utils/              # Utility functions (e.g., formatting functions)
+├── navigation/
+└── services
 ```
 
-## Step 2: Start your Application
+## License
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+This project is licensed under the MIT License.

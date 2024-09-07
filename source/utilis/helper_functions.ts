@@ -9,17 +9,12 @@ export const getPercentWidth = (percent: number) => {
 };
 
 export function formatNumberWithCommas(number: number) {
-  // Split the number into whole and decimal parts
   const parts = number.toString().split('.');
-
-  // Format the whole number part with commas
   const wholeNumberWithCommas = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-
-  // If there is a decimal part, append it back to the whole number with commas
   const result =
     parts.length > 1
       ? wholeNumberWithCommas + '.' + parts[1]
-      : wholeNumberWithCommas;
+      : wholeNumberWithCommas + '.00';
 
   return result;
 }

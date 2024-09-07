@@ -11,7 +11,7 @@ import {Category} from 'components/categories/CategoryOverlay';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {StackParamList} from 'navigation/StackNav';
 
-interface Expense {
+export interface Expense {
   name: string;
   amount: string;
   category: Category;

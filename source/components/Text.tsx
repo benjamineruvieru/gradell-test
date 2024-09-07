@@ -165,11 +165,13 @@ export const SmallText: React.FC<TextProps> = ({
   numLines,
   touchStyle,
   onTextLayout = () => {},
+  color = 'black',
 }) => {
   const styles = StyleSheet.create({
     text: {
       fontFamily: 'Poppins-Regular',
       fontSize: 13,
+      color,
       ...style,
     },
   });

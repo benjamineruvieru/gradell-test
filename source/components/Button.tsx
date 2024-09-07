@@ -1,11 +1,6 @@
-import {
-  ActivityIndicator,
-  StyleSheet,
-  TouchableOpacity,
-  ViewStyle,
-} from 'react-native';
+import {StyleSheet, TouchableOpacity, ViewStyle} from 'react-native';
 import React from 'react';
-import {SmallTextB} from './Text';
+import {SmallText} from './Text';
 import Colors from '../constants/Colors';
 import {getPercentWidth} from '../utilis/helper_functions';
 import {isPhone} from '../constants/Variables';
@@ -14,7 +9,6 @@ interface ButtonProps {
   title: string;
   width?: number;
   style?: ViewStyle;
-  load?: boolean;
   onPress?: () => void;
   backgroundColor?: string;
   bottom?: number;
@@ -27,7 +21,6 @@ const Button: React.FC<ButtonProps> = ({
   title,
   width = isPhone ? 90 : 96,
   style,
-  load,
   onPress,
   backgroundColor = Colors.primary,
   bottom = 0,
@@ -46,26 +39,23 @@ const Button: React.FC<ButtonProps> = ({
       justifyContent: 'center',
       marginBottom: bottom,
       marginTop: top,
-      opacity: disable || load ? 0.5 : 1,
-      padding: small ? 8 : load ? 17 : 20,
+      opacity: disable ? 0.5 : 1,
+      padding: small ? 8 : 20,
       width: getPercentWidth(width),
       ...style,
     },
   });
 
   return (
-    <TouchableOpacity
-      disabled={load || disable}
-      style={styles.bg}
-      onPress={onPress}>
-      <SmallTextB
+    <TouchableOpacity disabled={disable} style={styles.bg} onPress={onPress}>
+      <SmallText
         style={{
           color: 'white',
-          fontFamily: small ? 'Poppins-Medium' : 'Poppins-SemiBold',
-          fontSize: small ? 11 : 13,
+          fontFamily: 'Poppins-SemiBold',
+          fontSize: 13,
         }}>
         {title}
-      </SmallTextB>
+      </SmallText>
     </TouchableOpacity>
   );
 };

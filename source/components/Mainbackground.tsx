@@ -8,10 +8,8 @@ import {
   ViewStyle,
   View,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {DeviceEventEmitter} from 'react-native';
-import Colors from '../constants/Colors';
 
 interface MainBackgroundProps {
   children: React.ReactNode;
@@ -37,27 +35,14 @@ const Mainbackground: React.FC<MainBackgroundProps> = ({
   androidAvoid,
 }) => {
   const insets = useSafeAreaInsets();
-  const [noti, setNoti] = useState(false);
-  useEffect(() => {
-    const myEventListener = DeviceEventEmitter.addListener(
-      'openNotification',
-      event => {
-        setNoti(true);
-        setTimeout(() => {
-          setNoti(false);
-        }, 3500);
-      },
-    );
 
-    return () => myEventListener.remove();
-  }, []);
   return (
     <Pressable
       disabled={!keyboard}
       onPress={() => Keyboard.dismiss()}
       style={{
         flex: 1,
-        backgroundColor: Colors.bg,
+        backgroundColor: 'white',
         padding,
         paddingBottom,
       }}>
@@ -67,8 +52,7 @@ const Mainbackground: React.FC<MainBackgroundProps> = ({
         behavior={avoid && Platform.OS === 'ios' ? 'padding' : androidAvoid}
         style={{
           flex: 1,
-
-          paddingTop: noti ? 0 : top ? top : insets.top,
+          paddingTop: top ? top : insets.top,
         }}>
         <View
           style={{
@@ -84,5 +68,3 @@ const Mainbackground: React.FC<MainBackgroundProps> = ({
 };
 
 export default Mainbackground;
-
-const styles = StyleSheet.create({});

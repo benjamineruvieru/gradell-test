@@ -23,7 +23,6 @@ interface CategoryOverlayProps {
 const CategoryOverlay: React.FC<CategoryOverlayProps> = ({onSelect, style}) => {
   const [height, setHeight] = useState(0);
 
-  console.log('height', height);
   const onLayout = (e: LayoutChangeEvent) => {
     setHeight(e.nativeEvent.layout.height);
   };

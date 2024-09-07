@@ -199,5 +199,3 @@ const Input: FC<InputProps> = ({
 };
 
 export default Input;
-
-const styles = StyleSheet.create({});

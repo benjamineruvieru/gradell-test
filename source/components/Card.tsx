@@ -1,8 +1,18 @@
 import {StyleSheet, View} from 'react-native';
-import React from 'react';
+import React, {ReactNode} from 'react';
 import Colors from 'constants/Colors';
 
-const Card = ({children, marginBottom = 15, marginTop = 15}) => {
+interface CardProps {
+  children: ReactNode;
+  marginBottom?: number;
+  marginTop?: number;
+}
+
+const Card: React.FC<CardProps> = ({
+  children,
+  marginBottom = 15,
+  marginTop = 15,
+}) => {
   const styles = StyleSheet.create({
     card: {
       borderWidth: 1,

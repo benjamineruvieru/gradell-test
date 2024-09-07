@@ -21,10 +21,6 @@ const App = () => {
       toValue: 0,
     }).start();
   };
-
-  const onReady = () => {
-    // BootSplash.hide();
-  };
   return (
     <GestureHandlerRootView
       style={{
@@ -37,7 +33,7 @@ const App = () => {
             flex: 1,
             transform: [{translateY: transY}],
           }}>
-          <NavigationContainer onReady={onReady}>
+          <NavigationContainer>
             <StackNav />
           </NavigationContainer>
         </Animated.View>

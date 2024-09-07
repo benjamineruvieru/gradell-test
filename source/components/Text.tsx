@@ -190,30 +190,3 @@ export const SmallText: React.FC<TextProps> = ({
     </Text>
   );
 };
-
-export const SmallTextB: React.FC<TextProps> = ({
-  children,
-  style,
-  onPress,
-  disabled,
-  onTextPress,
-}) => {
-  const styles = StyleSheet.create({
-    text: {
-      fontFamily: 'Poppins-SemiBold',
-      fontSize: 13,
-
-      ...style,
-    },
-  });
-
-  return (
-    <Text
-      disabled={disabled}
-      onPress={onPress}
-      onTextPress={onTextPress}
-      style={styles.text}>
-      {children}
-    </Text>
-  );
-};

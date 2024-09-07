@@ -3,7 +3,6 @@ import {MMKV} from 'react-native-mmkv';
 const storage = new MMKV();
 
 export const setItem = (key: string, value: any, shouldStringify?: boolean) => {
-  console.log('SAVING', value);
   const mainvalue = shouldStringify ? JSON.stringify(value) : value;
   storage.set(key, mainvalue);
 };

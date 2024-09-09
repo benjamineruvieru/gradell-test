@@ -1,15 +1,9 @@
-import {
-  LayoutChangeEvent,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  ViewStyle,
-} from 'react-native';
-import React, {useState} from 'react';
-import {expenseCategories, SCREEN_WIDTH} from 'constants/Variables';
+import {StyleSheet, TouchableOpacity, View, ViewStyle} from 'react-native';
+import React from 'react';
+import {expenseCategories} from 'constants/Variables';
 import {SmallText} from 'components/Text';
 import Colors from 'constants/Colors';
+import {ScrollView} from 'react-native-gesture-handler';
 
 export interface Category {
   category: string;
@@ -22,21 +16,13 @@ interface CategoryOverlayProps {
 }
 
 const CategoryOverlay: React.FC<CategoryOverlayProps> = ({onSelect, style}) => {
-  const [height, setHeight] = useState(0);
-
-  const onLayout = (e: LayoutChangeEvent) => {
-    setHeight(e.nativeEvent.layout.height);
-  };
   const styles = StyleSheet.create({
     overlay: {
       position: 'absolute',
-      bottom: -height,
+      bottom: -300,
       backgroundColor: 'white',
-      flexDirection: 'row',
-      flexWrap: 'wrap',
       borderRadius: 10,
       padding: 15,
-      gap: 10,
       zIndex: 1,
       maxWidth: '100%',
       elevation: 5,
@@ -46,8 +32,10 @@ const CategoryOverlay: React.FC<CategoryOverlayProps> = ({onSelect, style}) => {
       shadowRadius: 5,
       borderWidth: 1,
       borderColor: Colors.borderColor,
+      height: 300,
       ...style,
     },
+    view: {flexDirection: 'row', flexWrap: 'wrap', gap: 10},
     categoryItem: {
       paddingHorizontal: 13,
       paddingVertical: 8,
@@ -55,17 +43,21 @@ const CategoryOverlay: React.FC<CategoryOverlayProps> = ({onSelect, style}) => {
     },
   });
   return (
-    <View onLayout={onLayout} style={styles.overlay}>
-      {expenseCategories.map(({category, color}) => (
-        <TouchableOpacity
-          key={category}
-          onPress={() => {
-            onSelect({category, color});
-          }}
-          style={[styles.categoryItem, {backgroundColor: color}]}>
-          <SmallText>{category}</SmallText>
-        </TouchableOpacity>
-      ))}
+    <View style={styles.overlay}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.view}>
+          {expenseCategories.map(({category, color}) => (
+            <TouchableOpacity
+              key={category}
+              onPress={() => {
+                onSelect({category, color});
+              }}
+              style={[styles.categoryItem, {backgroundColor: color}]}>
+              <SmallText>{category}</SmallText>
+            </TouchableOpacity>
+          ))}
+        </View>
+      </ScrollView>
     </View>
   );
 };
